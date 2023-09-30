@@ -1,6 +1,9 @@
 package frc.robot.commands;
 
+import frc.lib.util.LimelightCalc;
 import frc.robot.Constants;
+import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.Swerve;
 
 import java.util.function.BooleanSupplier;
@@ -32,9 +35,20 @@ public class TeleopSwerve extends CommandBase {
     public void execute() {
 
         // check if x botton is pressed, if it is use vision to orient to apriltag in frame, if no tag in frame continue to normal drive
+        
+        if(s_Swerve.visionControl){ // x is pressed
 
-        if(){ // x is pressed
+            double translationVal = 0;
+            double strafeVal = 0;
+            double rotationVal = 0;
 
+                /* Drive */
+                s_Swerve.drive(
+                    new Translation2d(translationVal, strafeVal).times(Constants.Swerve.maxSpeed), 
+                    rotationVal * Constants.Swerve.maxAngularVelocity, 
+                    true, 
+                    true
+                );
         } else {
             /* Get Values, Deadband*/
             double translationVal = MathUtil.applyDeadband(translationSup.getAsDouble(), Constants.stickDeadband);

@@ -28,6 +28,7 @@ public class Swerve extends SubsystemBase {
     public SwerveDriveOdometry swerveOdometry;
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
+    public boolean visionControl = false;
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -106,6 +107,11 @@ public class Swerve extends SubsystemBase {
 
     public void zeroGyro(){
         gyro.setYaw(0);
+    }
+
+    public void visionControl(boolean val)
+    {
+        visionControl = val; 
     }
 
     public Rotation2d getYaw() {
