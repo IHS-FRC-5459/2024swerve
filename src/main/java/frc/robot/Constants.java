@@ -13,6 +13,12 @@ import frc.lib.util.SwerveModuleConstants;
 public final class Constants {
     public static final double stickDeadband = 0.1;
 
+    public static final class Limelight {
+        public static final double cameraHeight = 0; // in m
+        public static final double cameraAngle = 0; // in degrees
+        public static final double targetHeight = 0; // in m
+    }
+
     public static final class Swerve {
         public static final int pigeonID = 1;
         public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-
