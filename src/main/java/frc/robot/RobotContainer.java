@@ -38,7 +38,7 @@ public class RobotContainer {
     private final Swerve s_Swerve = new Swerve();
 
     /* Autos */
-    PathPlannerTrajectory examplePath = PathPlanner.loadPath("Example Path", new PathConstraints(4, 3));
+    PathPlannerTrajectory examplePath = PathPlanner.loadPath("MyPath", new PathConstraints(4, 3));
 
 
 
