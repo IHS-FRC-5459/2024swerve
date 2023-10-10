@@ -39,7 +39,9 @@ public class RobotContainer {
     private final Swerve s_Swerve = new Swerve();
 
     /* Autos */
-    PathPlannerTrajectory examplePath = PathPlanner.loadPath("MyPath", new PathConstraints(4, 3));
+    PathPlannerTrajectory forwardPath = PathPlanner.loadPath("forward", new PathConstraints(4, 3));
+    PathPlannerTrajectory turnPath = PathPlanner.loadPath("turn90", new PathConstraints(4, 3));
+
 
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -80,7 +82,7 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         // An ExampleCommand will run in autonomous
         //return new exampleAuto(s_Swerve);
-        return s_Swerve.followTrajectoryCommand(examplePath, true);
+        return s_Swerve.followTrajectoryCommand(turnPath, true);
     }
 
 }

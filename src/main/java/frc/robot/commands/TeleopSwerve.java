@@ -36,20 +36,7 @@ public class TeleopSwerve extends CommandBase {
 
         // check if x botton is pressed, if it is use vision to orient to apriltag in frame, if no tag in frame continue to normal drive
         
-        if(s_Swerve.visionControl){ // x is pressed
-
-            double translationVal = 0;
-            double strafeVal = 0;
-            double rotationVal = 0;
-
-                /* Drive */
-                s_Swerve.drive(
-                    new Translation2d(translationVal, strafeVal).times(Constants.Swerve.maxSpeed), 
-                    rotationVal * Constants.Swerve.maxAngularVelocity, 
-                    true, 
-                    true
-                );
-        } else {
+   
             /* Get Values, Deadband*/
             double translationVal = MathUtil.applyDeadband(translationSup.getAsDouble(), Constants.stickDeadband);
             double strafeVal = MathUtil.applyDeadband(strafeSup.getAsDouble(), Constants.stickDeadband);
@@ -62,7 +49,7 @@ public class TeleopSwerve extends CommandBase {
                 !robotCentricSup.getAsBoolean(), 
                 true
             );
-        }
+        
 
 
 

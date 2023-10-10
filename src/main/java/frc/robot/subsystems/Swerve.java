@@ -133,7 +133,6 @@ public class Swerve extends SubsystemBase {
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Integrated", mod.getPosition().angle.getDegrees());
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Velocity", mod.getState().speedMetersPerSecond);    
         }
-        swerveOdometry.update(getYaw(), getModulePositions());  
     }
 
     public Command followTrajectoryCommand(PathPlannerTrajectory traj, boolean isFirstPath) {
@@ -148,11 +147,11 @@ public class Swerve extends SubsystemBase {
                  traj, 
                  this::getPose, // Pose supplier
                  Constants.Swerve.swerveKinematics, // SwerveDriveKinematics
-                 new PIDController(0.75388, 0, 0), // X controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
-                 new PIDController(0.75388, 0, 0), // Y controller (usually the same values as X controller)
-                 new PIDController(0.2, 0, 0), // Rotation controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
+                 new PIDController(Constants.AutoConstants.kPXController, 0, 0), // X controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
+                 new PIDController(Constants.AutoConstants.kPYController, 0, 0), // Y controller (usually the same values as X controller)
+                 new PIDController(Constants.AutoConstants.kPThetaController, 0, 0), // Rotation controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
                  this::setModuleStates, // Module states consumer
-                 true, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
+                 false, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
                  this // Requires this drive subsystem
              )
          );
