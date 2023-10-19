@@ -7,8 +7,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.0,
-        "y": 0.0
+        "x": 6.123233995736759e-17,
+        "y": 0.9999999999999989
       },
       "holonomicAngle": 0,
       "isReversal": false,
@@ -28,11 +28,11 @@
         "y": 0.0
       },
       "prevControl": {
-        "x": 0.0,
-        "y": -0.799818929850548
+        "x": -0.15133033916154512,
+        "y": 0.0
       },
       "nextControl": null,
-      "holonomicAngle": 0,
+      "holonomicAngle": 90.0,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,

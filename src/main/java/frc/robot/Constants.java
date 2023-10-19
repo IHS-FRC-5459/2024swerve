@@ -73,7 +73,7 @@ public final class Constants {
         public static final double angleKF = chosenModule.angleKF;
 
         /* Drive Motor PID Values */
-        public static final double driveKP = 1.4727; //TODO: This must be tuned to specific robot
+        public static final double driveKP = 1.0522; //TODO: This must be tuned to specific robot
         public static final double driveKI = 0.0;
         public static final double driveKD = 0.0;
         public static final double driveKF = 0.0;
@@ -133,21 +133,22 @@ public final class Constants {
             public static final int driveMotorID = 5;
             public static final int angleMotorID = 4;
             public static final int canCoderID = 13;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(329.35-180);
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(347.78);
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
     }
 
     public static final class AutoConstants { //TODO: The below constants are used in the example auto, and must be tuned to specific robot
+        
         public static final double kMaxSpeedMetersPerSecond = 4;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
         public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
         public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
     
-        public static final double kPXController = 0;
+        public static final double kPXController = 1.8;
         public static final double kPYController = kPXController;
-        public static final double kPThetaController = 3;
+        public static final double kPThetaController = 1.3;
     
         /* Constraint for the motion profilied robot angle controller */
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =

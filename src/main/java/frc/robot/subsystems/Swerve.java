@@ -13,6 +13,7 @@ import com.pathplanner.lib.PathPlannerTrajectory;
 import com.pathplanner.lib.commands.PPSwerveControllerCommand;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -29,6 +30,7 @@ public class Swerve extends SubsystemBase {
     public SwerveModule[] mSwerveMods;
     public Pigeon2 gyro;
     public boolean visionControl = false;
+
 
     public Swerve() {
         gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -136,6 +138,12 @@ public class Swerve extends SubsystemBase {
     }
 
     public Command followTrajectoryCommand(PathPlannerTrajectory traj, boolean isFirstPath) {
+
+        var thetaController =
+        new PIDController(Constants.AutoConstants.kPThetaController, 0, 0);
+        thetaController.enableContinuousInput(-Math.PI, Math.PI);
+
+    
         return new SequentialCommandGroup(
              new InstantCommand(() -> {
                // Reset odometry for the first path you run during auto
@@ -149,7 +157,7 @@ public class Swerve extends SubsystemBase {
                  Constants.Swerve.swerveKinematics, // SwerveDriveKinematics
                  new PIDController(Constants.AutoConstants.kPXController, 0, 0), // X controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
                  new PIDController(Constants.AutoConstants.kPYController, 0, 0), // Y controller (usually the same values as X controller)
-                 new PIDController(Constants.AutoConstants.kPThetaController, 0, 0), // Rotation controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
+                 thetaController, // Rotation controller. Tune these values for your robot. Leaving them 0 will only use feedforwards.
                  this::setModuleStates, // Module states consumer
                  false, // Should the path be automatically mirrored depending on alliance color. Optional, defaults to true
                  this // Requires this drive subsystem

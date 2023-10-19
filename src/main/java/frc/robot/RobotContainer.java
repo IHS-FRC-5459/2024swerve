@@ -69,9 +69,6 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
-        visionCenter.onTrue(new InstantCommand(() -> s_Swerve.visionControl(true)));
-        visionCenter.onFalse(new InstantCommand(() -> s_Swerve.visionControl(false)));
-
     }
 
     /**
@@ -82,7 +79,7 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         // An ExampleCommand will run in autonomous
         //return new exampleAuto(s_Swerve);
-        return s_Swerve.followTrajectoryCommand(turnPath, true);
+        return s_Swerve.followTrajectoryCommand(forwardPath, true);
     }
 
 }
