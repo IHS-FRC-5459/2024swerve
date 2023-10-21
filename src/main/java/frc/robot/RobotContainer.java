@@ -36,11 +36,12 @@ public class RobotContainer {
     private final JoystickButton visionCenter = new JoystickButton(driver, XboxController.Button.kX.value);
 
     /* Subsystems */
-    private final Swerve s_Swerve = new Swerve();
+    public final Swerve s_Swerve = new Swerve();
 
     /* Autos */
     PathPlannerTrajectory forwardPath = PathPlanner.loadPath("forward", new PathConstraints(4, 3));
     PathPlannerTrajectory turnPath = PathPlanner.loadPath("turn90", new PathConstraints(4, 3));
+    PathPlannerTrajectory testPath = PathPlanner.loadPath("testpath", new PathConstraints(4, 3));
 
 
 
@@ -69,6 +70,7 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
+        visionCenter.onTrue(new InstantCommand(() -> s_Swerve.visionControl()));
     }
 
     /**
@@ -79,7 +81,7 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         // An ExampleCommand will run in autonomous
         //return new exampleAuto(s_Swerve);
-        return s_Swerve.followTrajectoryCommand(forwardPath, true);
+        return s_Swerve.followTrajectoryCommand(testPath, true);
     }
 
 }

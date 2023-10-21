@@ -14,9 +14,9 @@ public final class Constants {
     public static final double stickDeadband = 0.1;
 
     public static final class Limelight {
-        public static final double cameraHeight = 0; // in m
-        public static final double cameraAngle = 0; // in degrees
-        public static final double targetHeight = 0; // in m
+        public static final double cameraHeight = 0.3429; // in m
+        public static final double cameraAngle = 17; // in degrees
+        public static final double targetHeight = 0.7747; // in m
     }
 
     public static final class Swerve {
@@ -73,7 +73,7 @@ public final class Constants {
         public static final double angleKF = chosenModule.angleKF;
 
         /* Drive Motor PID Values */
-        public static final double driveKP = 1.0522; //TODO: This must be tuned to specific robot
+        public static final double driveKP = 0.10771; //TODO: This must be tuned to specific robot
         public static final double driveKI = 0.0;
         public static final double driveKD = 0.0;
         public static final double driveKF = 0.0;

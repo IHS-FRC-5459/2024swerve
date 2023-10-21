@@ -111,9 +111,9 @@ public class Swerve extends SubsystemBase {
         gyro.setYaw(0);
     }
 
-    public void visionControl(boolean val)
+    public void visionControl()
     {
-        visionControl = val; 
+        visionControl = !visionControl; 
     }
 
     public Rotation2d getYaw() {
