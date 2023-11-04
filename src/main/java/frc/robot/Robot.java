@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
   public static double ty;
   public static double tv;
   public static double targetInVision = 0;
+  public static double distance;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -119,7 +120,8 @@ public class Robot extends TimedRobot {
      angle = lltable[5];
      targetInVision = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
 
-    
+    distance = NetworkTableInstance.getDefault().getTable("limelight").getEntry("targetpose_robotspace").getDoubleArray(new double[6])[2];
+
     SmartDashboard.putNumber("tx", tx);
     SmartDashboard.putNumber("ty", ty);
     SmartDashboard.putBoolean("target", targetInVision > 0.9 ? true : false);
@@ -127,8 +129,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("angle", angle);
     SmartDashboard.putNumber("distance", LimelightCalc.getDistance(ty));
 
-
-
+    SmartDashboard.putNumber("flywheel velo", m_robotContainer.s_Flywheel.getMotorVelocity());
+    
   }
 
   @Override

@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autos.*;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import frc.robot.commands.SpinFlywheel;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -34,9 +36,12 @@ public class RobotContainer {
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton visionCenter = new JoystickButton(driver, XboxController.Button.kX.value);
+    private final JoystickButton flywheelButton = new JoystickButton(driver, XboxController.Button.kA.value);
+
 
     /* Subsystems */
     public final Swerve s_Swerve = new Swerve();
+    public final Flywheel s_Flywheel = new Flywheel(); 
 
     /* Autos */
     PathPlannerTrajectory forwardPath = PathPlanner.loadPath("forward", new PathConstraints(4, 3));
@@ -71,6 +76,7 @@ public class RobotContainer {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
         visionCenter.onTrue(new InstantCommand(() -> s_Swerve.visionControl()));
+        flywheelButton.toggleOnTrue(new SpinFlywheel(870));
     }
 
     /**

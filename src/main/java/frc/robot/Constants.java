@@ -13,6 +13,23 @@ import frc.lib.util.SwerveModuleConstants;
 public final class Constants {
     public static final double stickDeadband = 0.1;
 
+    public static final class Arm {
+        public static final int armExtendMotorID = -1;
+        public static final int armRotateMotorID = -1;
+        public static final double kP_extend = 0.1;
+        public static final double kP_rotate = 0.1;
+        public static final double kF_extend = 0.15; //volts to hold arm extension at fixed position when arm is @ 90 deg (upright). multiply by cos(angle)
+        public static final double kF_rotate = 0.15; //volts to hold arm rotation at a fixed position when arm is @ 180/0 deg (flat). multiple by sin(angle)
+    }
+
+    public static final class FlywheelConstants {
+        public static final int flyWheelMotorID = 22;
+        public static final double flywheelGearRatio = 50/15;
+        public static final double kS_Flywheel = 0.063712/60; 
+        public static final double kV_Flywheel = 0.40344/60;
+        public static final double kA_Flywheel = 0.024493/60; //not used for flywheels
+    }
+
     public static final class Limelight {
         public static final double cameraHeight = 0.3429; // in m
         public static final double cameraAngle = 17; // in degrees
