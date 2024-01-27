@@ -12,15 +12,13 @@ public class LED {
     static CANdle _candle = new CANdle(1, "light bus");
 
     public LED() {
-
+    
     }
 
-    
-
     // sets the colors of an LED
-    public static void setLED(int LEDId, int LEDRed, int LEDGreen, int LEDBlue) {
+    public static void setLED(int LEDId, int[] RGBVal) {
 
-        _candle.setLEDs(LEDRed, LEDGreen, LEDBlue, 0, LEDId, 1);
+        _candle.setLEDs(RGBVal[0], RGBVal[1], RGBVal[2], 0, LEDId, 1);
     
     }
 
@@ -32,11 +30,11 @@ public class LED {
         
         if(setOn == true) {
 
-            LED.setLED("id of the green LED", 255, 0, 0);
+            LED.setLED("id of the green LED", Constants.Colors.greenColor;
 
         } else if(setOn == false) {
 
-            LED.setLED("id of the green LED", 0, 0, 0);
+            LED.setLED("id of the green LED", Constants.Colors.noColor);
 
         }
 

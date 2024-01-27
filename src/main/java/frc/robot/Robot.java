@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.lib.util.LimelightCalc;
+import frc.robot.subsystems.LED;
 
 import java.util.Arrays;
 
@@ -50,6 +51,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    LED.setLED(1, Constants.Colors.blueColor);//tests first LED
   }
 
   public static RobotContainer getRobotContainer()

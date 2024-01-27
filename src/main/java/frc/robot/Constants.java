@@ -35,7 +35,16 @@ public final class Constants {
         public static final double cameraAngle = 17; // in degrees
         public static final double targetHeight = 0.7747; // in m
     }
-
+    public static final class Colors {
+        public static final int[] noColor = {0, 0, 0};
+        public static final int[] redColor = {255, 0, 0};
+        public static final int[] greenColor = {0, 255, 0};
+        public static final int[] blueColor = {0, 0, 255};
+        public static final int[] cyanColor = {0, 255, 255};
+        public static final int[] magentaColor = {255, 0, 255};
+        public static final int[] yellowColor = {255, 255, 0};
+        public static final int[] whiteColor = {255, 255, 255};
+    }
     public static final class Swerve {
         public static final int pigeonID = 1;
         public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-
@@ -167,6 +176,7 @@ public final class Constants {
         public static final double kPYController = kPXController;
         public static final double kPThetaController = 1.3;
     
+        
         /* Constraint for the motion profilied robot angle controller */
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
             new TrapezoidProfile.Constraints(
